@@ -1,4 +1,5 @@
 ﻿<html>
+	<script src="main.js"></script>
 	<style>
 		body{
 			background-color: #363330;
@@ -24,6 +25,54 @@
 		a{
 			color: #00ddff;
 		}
+		p{
+			display:inline;
+			margin:2%;
+		}
+		#infoLine{
+			margin:2%;
+			background-color:#444444;
+		}
+		#mainButtons{
+			margin:2%;
+		}
+		#settingsButton{
+			position:absolute;
+			left:1%;
+			bottom:1%;
+		}
+		button{
+			font-size:40;
+		}
+
+		.modal {
+		  display: none;
+		  position: fixed;
+		  z-index: 1;
+		  left: 0;
+		  top: 0;
+		  width: 100%;
+		  height: 100%;
+		  overflow: auto;
+		  background-color: rgb(0,0,0);
+		  background-color: rgba(0,0,0,0.4);
+		}
+
+		.modal-content {
+		  background-color: #000000;
+		  margin: 15% auto;
+		  padding: 20px;
+		  border: 1px solid #888;
+		  width: 80%;
+		}
+
+		.close {
+		  color: #aaa;
+		  float: right;
+		  font-size: 28px;
+		  font-weight: bold;
+		}
+
 	</style>
 
 	<head>
@@ -36,17 +85,47 @@
 			Heat Incremental
 		</h1>
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 
-	<body>
+	<body onLoad="load()">
 		<h2>
-			<span style="color: #eeee00; position: relative; top:40vh; text-align: right;">Δ Under construction Δ</span>
+			<div id="infoLine">
+				You have a box of air. Make some heat to pump in to it.
+			</div>
+
+			<div id="resources">
+				<p id="heat"></p>
+				<p id="volume"></p>
+				<p id="temp"></p>
+			</div>
+
+			<div id="mainButtons">
+				<button id="heatButton" type="button" onClick="heatButton()">
+					Rub your hands together
+				</button>
+			</div>
+
+			<div id="settingsButton">
+				<button id="settingsButton" type="button" onClick="showSettings()">
+					Settings
+				</button>
+			</div>
+
+			<div id="settings" class="modal">
+				<div class="modal-content">
+					<span class="close" onClick="hideSettings()">&times;</span>
+					<p>
+						<button type="button" onClick="save()">Save Game</button>
+						<button type="button" onClick="deleteSave()">Delete Save</button>
+					</p>
+				</div>
+			</div>
 		</h2>
 	</body>
 
 	<footer>
-		<a href="https://ArrenM.github.io" target="_blank">Arren Meuchel</a> - Version <a href="versionHistory.html">0.00.01</a>
+		<div id="saveText"></div>
+		<a href="https://ArrenM.github.io" target="_blank" rel="noopener noreferrer">Arren Meuchel</a> - Version <a href="versionHistory.html">0.01.00</a>
 	</footer>
 
 </html>
